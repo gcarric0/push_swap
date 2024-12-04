@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   stack_help.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcarrico <gcarrico@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 11:48:58 by gcarrico          #+#    #+#             */
-/*   Updated: 2024/12/04 11:18:35 by gcarrico         ###   ########.fr       */
+/*   Created: 2024/12/04 11:46:20 by gcarrico          #+#    #+#             */
+/*   Updated: 2024/12/04 12:13:50 by gcarrico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include "../push_swap/printlib/ft_printf.h"
-# include <limits.h>
-# include <stdbool.h>
-
-typedef struct s_stack_node
+int	stack_len(t_stack_node *stack)
 {
-	int					nbr;
-	int					index;
-	int					cost;
-	bool				cheapest;
-	bool				average;
+	int	len;
 
-	struct s_stack_node	*next;
-	struct s_stack_node	*prev;
-	struct s_stack_node	*target;
-}						t_stack_node;
+	len = 0;
+	if (!stack)
+		return (0);
+	while (stack)
+	{
+		stack = stack->next;
+		len++;
+	}
+	return (len);
+}
 
-#endif
+t_stack_node	*find_last(t_stack_node *stack)
+{
+	if (!stack)
+		return (NULL);
+	while (stack->next != NULL)
+		stack = stack->next;
+	return (stack);
+}
