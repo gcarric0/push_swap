@@ -6,7 +6,7 @@
 /*   By: gcarrico <gcarrico@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:48:58 by gcarrico          #+#    #+#             */
-/*   Updated: 2024/12/04 11:18:35 by gcarrico         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:44:01 by gcarrico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,12 @@ typedef struct s_stack_node
 	struct s_stack_node	*prev;
 	struct s_stack_node	*target;
 }						t_stack_node;
+
+t_stack_node			*find_last(t_stack_node *stack);
+int						stack_len(t_stack_node *stack);
+int						check_duplicates(t_stack_node *stack, int n);
+int						check_syntax(char *stack_n);
+void					free_stack(t_stack_node **stack);
+void					free_errors(t_stack_node **stack);
 
 #endif
